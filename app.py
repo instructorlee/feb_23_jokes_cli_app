@@ -9,4 +9,12 @@ jokes = [
 
 line_input = input('command-> ').strip()
 
+"""
+    - add, list, update, delete
+    - print "invalid command"
+    - Use the 'pass' keyword to replace future functionality.
+
+    IF Statements
+"""
+
 print( f"You Entered: {line_input}" )        
