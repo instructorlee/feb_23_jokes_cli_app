@@ -7,7 +7,41 @@ jokes = [
     }
 ]
 
-line_input = input('command-> ').strip()
+is_playing = True
+
+while ( is_playing ):
+    line_input = input('command-> ').strip() #add::why did the chicken ....... #update::2::New JOke.......
+
+    line_parts = line_input.split('::')
+
+    """
+    line_parts.append('')
+    line_parts.append('')  
+    """
+
+    command = line_parts[0]
+    param_1 = line_parts[1] if len(line_parts) > 1 else None # null
+    param_2 = line_parts[2] if len(line_parts) > 2 else None
+
+
+    if command == 'list': # list
+        pass
+
+    elif command == 'add': # implement
+        pass
+
+    elif command == 'delete':
+        pass
+
+    elif command == 'update':
+        pass
+
+    elif command == 'quit':
+        is_playing = False
+
+    else:
+        print("Invalid Command")
+
 
 """
     - add, list, update, delete
@@ -17,4 +51,16 @@ line_input = input('command-> ').strip()
     IF Statements
 """
 
-print( f"You Entered: {line_input}" )        
+print( "You are one funny guy!" )     
+
+"""
+ swtich(command) {
+
+     case 'list':
+         cde
+
+    case 'edit':
+        code
+ }
+
+"""
