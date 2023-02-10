@@ -23,6 +23,14 @@ while ( is_playing ):
     param_1 = line_parts[1] if len(line_parts) > 1 else None # null
     param_2 = line_parts[2] if len(line_parts) > 2 else None
 
+    """
+        Challenge:
+            Implement list and add functionality working with the jokes list above.
+
+        X-tra Challenge:
+            Do not add a joke if the text is blank.
+            Enumerate the listing
+    """
 
     if command == 'list': # list
         pass
