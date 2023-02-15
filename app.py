@@ -14,35 +14,24 @@ while ( is_playing ):
 
     line_parts = line_input.split('::')
 
-    """
-    line_parts.append('')
-    line_parts.append('')  
-    """
-
+    # Last Thursday Office Hour
     command = line_parts[0]
     param_1 = line_parts[1] if len(line_parts) > 1 else None # null
     param_2 = line_parts[2] if len(line_parts) > 2 else None
 
-    """
-        Challenge:
-            Implement list and add functionality working with the jokes list above.
+    if command == 'list': 
+        for index, joke in enumerate(jokes):
+            print(f"{index}: {joke['text']}")
 
-        X-tra Challenge:
-            Do not add a joke if the text is blank.
-            Enumerate the listing
-    """
-
-    if command == 'list': # list
-        pass
-
-    elif command == 'add': # implement
-        pass
+    elif command == 'add':
+        if param_1:
+            jokes.append({'text': param_1})
 
     elif command == 'delete':
-        pass
-
+        del(jokes[int(param_1) - 1])
+            
     elif command == 'update':
-        pass
+        jokes[int(param_1) - 1] = {'text': param_2}
 
     elif command == 'quit':
         is_playing = False
@@ -50,25 +39,4 @@ while ( is_playing ):
     else:
         print("Invalid Command")
 
-
-"""
-    - add, list, update, delete
-    - print "invalid command"
-    - Use the 'pass' keyword to replace future functionality.
-
-    IF Statements
-"""
-
 print( "You are one funny guy!" )     
-
-"""
- swtich(command) {
-
-     case 'list':
-         cde
-
-    case 'edit':
-        code
- }
-
-"""
