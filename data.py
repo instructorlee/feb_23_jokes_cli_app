@@ -35,5 +35,3 @@ class Data:
         except Exception as e: # can save error a message that can be displayed
             print(f'save error: {e}')
             return False
-
-    

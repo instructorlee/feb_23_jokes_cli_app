@@ -1,11 +1,11 @@
-jokes = [
-    {
-        'text': "Why did the chicken cross the road? To get to the ther side.",
-    },
-    {
-        'text': "Why do golfers carry 2 pairs of socks? In case they get a hole in one.",
-    }
-]
+from data import Data
+from joke import Joke
+
+data_handler = Data('jokes_data') # persisting data
+
+jokes = data_handler.get()
+
+Joke.load()
 
 is_playing = True
 
@@ -20,18 +20,20 @@ while ( is_playing ):
     param_2 = line_parts[2] if len(line_parts) > 2 else None
 
     if command == 'list': 
-        for index, joke in enumerate(jokes):
+        for index, joke in enumerate(Joke.jokes):
             print(f"{index}: {joke['text']}")
 
     elif command == 'add':
         if param_1:
-            jokes.append({'text': param_1})
+            Joke.create(param_1)
 
     elif command == 'delete':
         del(jokes[int(param_1) - 1])
+        data_handler.save(jokes)
             
     elif command == 'update':
         jokes[int(param_1) - 1] = {'text': param_2}
+        data_handler.save(jokes)
 
     elif command == 'quit':
         is_playing = False
