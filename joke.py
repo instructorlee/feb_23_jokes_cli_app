@@ -46,3 +46,13 @@ class Joke:
         cls.save()
 
         return new_joke
+
+    @classmethod
+    def update(cls, id, text):
+         Joke.jokes[id - 1].text = text
+         cls.save()
+
+    @classmethod
+    def delete(cls, id):
+        del(Joke.jokes[id - 1])
+        cls.save()

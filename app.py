@@ -3,7 +3,6 @@ from joke import Joke
 
 data_handler = Data('jokes_data') # persisting data
 
-jokes = data_handler.get()
 
 Joke.load()
 
@@ -20,20 +19,18 @@ while ( is_playing ):
     param_2 = line_parts[2] if len(line_parts) > 2 else None
 
     if command == 'list': 
-        for index, joke in enumerate(Joke.jokes):
-            print(f"{index}: {joke['text']}")
+        for index in range(0, len(Joke.jokes)):
+            print(f"{index + 1}: {Joke.jokes[index].text}")
 
     elif command == 'add':
         if param_1:
             Joke.create(param_1)
 
     elif command == 'delete':
-        del(jokes[int(param_1) - 1])
-        data_handler.save(jokes)
+        Joke.delete(int(param_1))
             
     elif command == 'update':
-        jokes[int(param_1) - 1] = {'text': param_2}
-        data_handler.save(jokes)
+        Joke.update(int(param_1), param_2)
 
     elif command == 'quit':
         is_playing = False
@@ -42,3 +39,22 @@ while ( is_playing ):
         print("Invalid Command")
 
 print( "You are one funny guy!" )     
+
+
+"""
+### test flow
+
+- Remove jokes_data.json
+
+- add a joke - add::{joke text}
+- list  : should see added joke; list should begin with 1 
+
+- add another joke - add::{joke text}
+- list  : should see 2 jokes; list should begin with 1 
+
+- update the joke - update::{joke id}::{new text}
+- list  : should see updated joke; list should begin with 1 
+
+- delete first joke - delete::{joke id}
+- list  : should see second joke; list should begin with 1 
+"""
